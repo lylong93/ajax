@@ -1,1 +1,1 @@
-# ajax
+简易的封装ajax和jsonp

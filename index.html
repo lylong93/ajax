@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>网络请求</title>
+    <script src="https://cdn.bootcss.com/jquery/2.2.4/jquery.js"></script>
+    <script type="text/javascript" src="./ajax.js"></script>
+</head>
+
+<body>
+    <div id='btn'>发送</div>
+    <script type="text/javascript">
+    var btn = document.querySelector('#btn')
+    btn.addEventListener('click', send, true)
+
+    function send() {
+        const opt = {
+            url: 'http://www.runoob.com/jsref/met-element-addeventlistener.html',
+            type: 'get'
+        }
+        // Ajs().ajax(opt)
+
+        let callbackName = 'cb' + (~~(Math.random() * 0xffffff)).toString(16)
+        console.log(callbackName)
+        window[callbackName] = function(result) {
+            console.log('ok')
+        }
+
+        var script = document.createElement('script')
+        script.setAttribute('type', 'text/javascript')
+        // script.setAttribute('src', callback')
+        document.querySelector('head').appendChild(script)
+
+        // var callBackRadom = 333
+        // window[callBackRadom] = callback();
+
+        // console.log(window[callBackRadom])
+
+
+    }
+    </script>
+</body>
+
+</html>

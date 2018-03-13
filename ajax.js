@@ -35,7 +35,10 @@
                 case 'jsonp':
                     var script = document.createElement('script')
                     script.setAttribute('type', 'text/javascript')
-                    script.setAttribute('src', url)
+                    var cbFuncName = "jsonp_cb" + Math.random().toString().replace(".", '');
+                    window[cbFuncName] = callback;
+                    queryString += 'callback=' + cbFuncName;
+                    script.setAttribute('src', url + queryString)
                     document.querySelector('head').appendChild(script)
             }
             xml.onreadystechange = function() {
